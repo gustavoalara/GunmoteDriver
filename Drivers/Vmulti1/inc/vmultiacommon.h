@@ -14,12 +14,8 @@
 // These are the report ids
 //
 
-#define REPORTID_MTOUCH         0x01
 #define REPORTID_FEATURE        0x02
 #define REPORTID_MOUSE          0x03
-#define REPORTID_RELATIVE_MOUSE 0x04
-#define REPORTID_DIGI           0x05
-#define REPORTID_JOYSTICK       0x06
 #define REPORTID_KEYBOARD       0x07
 #define REPORTID_MESSAGE        0x10
 #define REPORTID_CONTROL        0x40
@@ -86,57 +82,6 @@ typedef struct _vmultia_KEYBOARD_OUTPUT_REPORT
 
 #pragma pack()
 
-//
-// Joystick specific report infomation
-//
-
-#pragma pack(1)
-typedef struct _vmultia_JOYSTICK_REPORT
-{
-
-    BYTE      ReportID;
-
-    BYTE      Throttle;
-
-    BYTE      XValue;
-
-    BYTE      YValue;
-
-    BYTE      Hat;
-
-    BYTE      RXValue;
-
-    BYTE      RYValue;
-
-    USHORT    Buttons;
-
-} vmultiaJoystickReport;
-#pragma pack()
-
-//
-// Digitizer specific report infomation
-//
-
-#define DIGI_TIPSWITCH_BIT    1
-#define DIGI_IN_RANGE_BIT     2
-
-#define DIGI_MIN_COORDINATE   0x0000
-#define DIGI_MAX_COORDINATE   0x7FFF
-
-#pragma pack(1)
-typedef struct _vmultia_DIGI_REPORT
-{
-
-    BYTE      ReportID;
-
-    BYTE      Status;
-
-    USHORT    XValue;
-
-    USHORT    YValue;
-
-} vmultiaDigiReport;
-#pragma pack()
 
 //
 // Mouse specific report information
@@ -169,73 +114,6 @@ typedef struct _vmultia_MOUSE_REPORT
 } vmultiaMouseReport;
 #pragma pack()
 
-//
-// Relative mouse specific report information
-//
-
-#define RELATIVE_MOUSE_MIN_COORDINATE   -127
-#define RELATIVE_MOUSE_MAX_COORDINATE   127
-
-#pragma pack(1)
-typedef struct _vmultia_RELATIVE_MOUSE_REPORT
-{
-
-    BYTE        ReportID;
-
-    BYTE        Button;
-
-    BYTE        XValue;
-
-    BYTE        YValue;
-
-    BYTE        WheelPosition;
-
-} vmultiaRelativeMouseReport;
-#pragma pack()
-
-//
-// Multitouch specific report information
-//
-
-#define MULTI_TIPSWITCH_BIT    1
-#define MULTI_IN_RANGE_BIT     2
-#define MULTI_CONFIDENCE_BIT   4
-
-#define MULTI_MIN_COORDINATE   0x0000
-#define MULTI_MAX_COORDINATE   0x7FFF
-
-#define MULTI_MAX_COUNT        20
-
-#pragma pack(1)
-typedef struct
-{
-
-    BYTE      Status;
-
-    BYTE      ContactID;
-
-    USHORT    XValue;
-
-    USHORT    YValue;
-
-    USHORT    Width;
-
-    USHORT    Height;
-
-}
-TOUCH, *PTOUCH;
-
-typedef struct _vmultia_MULTITOUCH_REPORT
-{
-
-    BYTE      ReportID;
-
-    TOUCH     Touch[2];
-
-    BYTE      ActualCount;
-
-} vmultiaMultiTouchReport;
-#pragma pack()
 
 //
 // Feature report infomation
@@ -285,3 +163,4 @@ typedef struct _vmultia_MESSAGE_REPORT
 #pragma pack()
 
 #endif
+
